@@ -22,7 +22,7 @@ export function ColorConverter(){
     }
 
     const checkHexType = (colorHex:string): boolean =>{
-      return colorHex.startsWith("#");
+      return /^#[0-9A-Fa-f]+$/.test(colorHex)
     }
 
     function handleChangeColorValue(value: string):void{
@@ -46,6 +46,7 @@ export function ColorConverter(){
           value={colorValue}
           onDoubleClick={setColorValue.bind('#9921ff', '')}
           onChange={(e) => handleChangeColorValue(e.target.value)}
+          maxLength={7}
         />
 
         <span className="result" id="result">
